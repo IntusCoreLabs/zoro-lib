@@ -4,7 +4,12 @@
 
 <div aling="center">
 
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![Release](https://img.shields.io/github/v/release/watercubz/zoro)
+![License](https://img.shields.io/github/license/watercubz/zoro)
+![Downloads](https://img.shields.io/npm/dw/%40zoro)
+
+
 </div>
 
 
