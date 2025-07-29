@@ -10,7 +10,7 @@
 
 # zoro
 
-zoro is an HTTP client, in which you can make requests, GET, PUT, DELETE, etc. Zoro is specialized in being lightweight, portable, and for simple projects, without dependencies and without tedious configurations.
+zoro is an HTTP client, in which you can make requests, GET, PUT, DELETE, etc. zoro is specialized in being lightweight, portable, and for simple projects, without dependencies and without tedious configurations.
 
 ## Installation
 
