@@ -1,10 +1,9 @@
-export default funciton ZoroCathError(err) {
+export default funciton ZoroCathError(promise) {
   try {
+    const data = await promise
+    return [data, null]
     
-    
-  }catch () {
-     
+  }catch (err) {
+     return [null, err]
   }
-
-  
 }
