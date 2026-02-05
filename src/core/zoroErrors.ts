@@ -1,27 +1,18 @@
-interface ZoroResponse<T> {
-  data: T;
-  message: string;
-  status: number;
-}
+import { ZoroResponse } from "../types/zoroErrorType.js";
 
 export class ZoroError<T> extends Error {
   public readonly status: string | number;
-  public readonly response: ZoroError<T>;
+  public readonly response: ZoroResponse<T>;
 
   constructor(
     message: string,
     status: string | number,
-    response: ZoroError<T>,
+    response: ZoroResponse<T>,
   ) {
     super(message);
     this.name = "ZoroError";
-    this.status = status;
     this.response = response;
 
     Object.setPrototypeOf(this, ZoroError.prototype);
-  }
-
-  get status() {
-    return this.response.status;
   }
 }
