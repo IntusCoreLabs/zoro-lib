@@ -14,7 +14,7 @@
 
 # zoro
 
-zoro is an HTTP client, in which you can make requests, GET, POST, PUT, DELETE, etc. zoro is specialized in being lightweight, portable, and for simple projects, without dependencies and without tedious configurations.
+Zoro is a lightweight, dependency-free HTTP client built on XMLHttpRequest with full TypeScript type safety — including typed errors.
 
 ## Installation
 
@@ -26,62 +26,72 @@ Install zoro with npm
     
 ## Example
 
-```javascript
-import zoro, { zoroCathError} from '@zoro'
+```typescript
+import Zoro, { ZoroError } from '@zoro'
 
+type DataUser = {
+  user: string
+  firstName: string
+  lastName: string
+  age: number
+}
 
-const zoro = new zoro()
+const zoro = new Zoro()
 
+zoro.get<DataUser>('api/users', (err, data) => {
+  if (err) {
+    if (err instanceof ZoroError<DataUser>) {
+      console.error(err.response.status)
+      console.error(err.response.message)
+      console.error(err.response.data)
+    }
 
-zoro.get('api/users', (err, data ) => {
-     if(err) {
-       zoroCathError(err)
-     } else {
-         console.log(data)
-     }
-})
-
-/*
-  {
-   users: 'jhon',
-   firstName: 'Jhon',
-   lastName: 'Doe',
-   age: 35
-
+    return
   }
 
-*/
-
+  console.log(data.user)
+})
 
 ```
 
-
 ```javascript
+import Zoro, { ZoroError } from '@zoro'
 
- const payload = {
-     user: 'Annie',
-     lastName: 'Doe',
-     age: 21
- }
+type DataUser = {
+  user: string
+  firstName: string
+  lastName: string
+  age: number
+}
 
- zoro.post('api/users', payload, (err, data) => {
-      if(err) {
-          zoroCathError(err)
-      } else {
-          console.log('zoro handled the request satisfactorily.', data)
-      }
+type CreateUserPayload = {
+  user: string
+  lastName: string
+  age: number
+}
+
+const payload: CreateUserPayload = {
+  user: 'Annie',
+  lastName: 'Doe',
+  age: 21
+}
+
+
+zoro.post<DataUser>('api/users', payload, (err, data) => {
+  if (err) {
+    if (err instanceof ZoroError<DataUser>) {
+      console.error(err.response.status)
+      console.error(err.response.message)
+      console.error(err.response.data)
+    }
+
+    return
+  }
+
+  console.log('Zoro handled the request satisfactorily.', data)
 })
 ```
 
-
-
-```javascript
- function getAllUsers() {
-     return zoro.get('api/zoro')
- }
-
-
-```
 ## Authors
 
 - [@watercubz](https://www.github.com/watercubz)
