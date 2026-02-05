@@ -2,19 +2,30 @@
   "name": "zoro",
   "version": "1.0.0",
   "description": "<p align=\"center\">\r   <img src=\"https://github.com/watercubz/zoro/raw/main/public/zoro-http.png\" alt=\"zoro-http logo\" width=\"200\"/>\r </p>",
-  "main": "index.js",
+  "main": "dist/zoro.js",
+  "types": "dist/zoro.d.ts",
   "directories": {
     "doc": "docs"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "node --watch /src/core/zoroHttp.ts",
+    "build": "tsc",
     "test": "vitest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/watercubz/zoro.git"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "http",
+    "axios",
+    "request",
+    "typescript"
+  ],
   "author": "watercubz",
   "license": "ISC",
   "type": "module",
@@ -23,11 +34,11 @@
   },
   "homepage": "https://github.com/watercubz/zoro#readme",
   "dependencies": {
-    "@types/node": "^25.2.0",
-    "vitest": "^4.0.18"
+    "@types/node": "^25.2.0"
   },
   "devDependencies": {
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
   }
 }
