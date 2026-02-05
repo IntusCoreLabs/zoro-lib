@@ -14,7 +14,7 @@
 
 # zoro
 
-Zoro is a lightweight, dependency-free HTTP client built on XMLHttpRequest with full TypeScript type safety — including typed errors.
+Zoro is a lightweight, dependency-free HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
 ## Installation
 
