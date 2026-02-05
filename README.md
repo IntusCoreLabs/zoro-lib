@@ -16,14 +16,24 @@
 
 Zoro is a lightweight, dependency-free HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
-## Installation
+# Installing
 
-Install zoro with npm
 
+## Package Manager
+
+npm:
 ```bash
   npm install @zoro
 ```
-    
+pnpm:
+```bash
+  pnpm add  @zoro
+```
+yarn:
+```bash
+  yarn add @zoro
+```
+
 ## Example
 
 ```typescript
@@ -53,6 +63,8 @@ zoro.get<DataUser>('api/users', (err, data) => {
 })
 
 ```
+
+## Example
 
 ```javascript
 import Zoro, { ZoroError } from '@zoro'
