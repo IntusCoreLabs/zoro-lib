@@ -118,14 +118,13 @@ example();
 ```
 ## API Reference
 
-````md
+````ts
 ## Initialization
 
-```ts
 const api = zoro({
   config: "https://jsonplaceholder.typicode.com",
 });
-```
+
 ````
 
 ### Configuration Parameters
