@@ -11,6 +11,12 @@ importers:
       '@types/node':
         specifier: ^25.2.0
         version: 25.2.0
+      '@types/xmlhttprequest':
+        specifier: ^1.8.2
+        version: 1.8.2
+      xmlhttprequest:
+        specifier: ^1.8.0
+        version: 1.8.0
     devDependencies:
       tsx:
         specifier: ^4.21.0
@@ -336,6 +342,9 @@ packages:
   '@types/node@25.2.0':
     resolution: {integrity: sha512-DZ8VwRFUNzuqJ5khrvwMXHmvPe+zGayJhr2CDNiKB1WBE1ST8Djl00D0IC4vvNmHMdj6DlbYRIaFE7WHjlDl5w==}
 
+  '@types/xmlhttprequest@1.8.2':
+    resolution: {integrity: sha512-PfIzIb4tiva9bL40mOmeAe23T3QkJS2AfZ+vqgJWEJ2bxn5KUnDkikizu6TVaZRzQeThOeAn/Zh4PMkfFwEMtg==}
+
   '@vitest/expect@4.0.18':
     resolution: {integrity: sha512-8sCWUyckXXYvx4opfzVY03EOiYVxyNrHS5QxX3DAIi5dpJAAkyJezHCP77VMX4HKA2LDT/Jpfo8i2r5BE3GnQQ==}
 
@@ -558,6 +567,10 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
+  xmlhttprequest@1.8.0:
+    resolution: {integrity: sha512-58Im/U0mlVBLM38NdZjHyhuMtCqa61469k2YP/AaPbvCoV9aQGUpbJBj1QRm2ytRiVQBD/fsw7L2bJGDVQswBA==}
+    engines: {node: '>=0.4.0'}
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.27.2':
@@ -729,6 +742,8 @@ snapshots:
   '@types/node@25.2.0':
     dependencies:
       undici-types: 7.16.0
+
+  '@types/xmlhttprequest@1.8.2': {}
 
   '@vitest/expect@4.0.18':
     dependencies:
@@ -958,3 +973,5 @@ snapshots:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
+
+  xmlhttprequest@1.8.0: {}
