@@ -8,13 +8,12 @@
 ![Release](https://img.shields.io/github/v/release/watercubz/zoro)
 ![Downloads](https://img.shields.io/npm/dw/%40zoro)
 
-
 </div>
 
 
 # zoro
 
-Zoro is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
+zoro is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
 # Installing
 
@@ -126,6 +125,7 @@ example();
 const api = zoro({
   config: "https://jsonplaceholder.typicode.com",
 });
+```
 ````
 
 ### Configuration Parameters
