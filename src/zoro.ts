@@ -1,3 +1,18 @@
-import * as zoro from "./core/zoroHttp.js";
+import { Zoro } from "./core/zoroHttp.ts";
+
+/**
+
+* Instantiates the main zoro class.
+
+* * @param config - Configuration object containing the baseUrl.
+
+* @returns An instance of the Zoro class to make requests.
+
+*/
+function zoro({ config }: { config: string }) {
+  const instance = new Zoro(config);
+
+  return instance;
+}
 
 export { zoro };
