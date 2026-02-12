@@ -1,18 +1,18 @@
 {
-  "name": "zoro",
+  "name": "@zoro/http",
   "version": "1.0.0",
-  "description": "<p align=\"center\">\r   <img src=\"https://github.com/watercubz/zoro/raw/main/public/zoro-http.png\" alt=\"zoro-http logo\" width=\"200\"/>\r </p>",
-  "main": "dist/zoro.js",
-  "types": "dist/zoro.d.ts",
-  "directories": {
-    "doc": "docs"
+  "description": "zoro HTTP client based on Promises and XMLHttpRequest",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "publishConfig": {
+    "access": "public"
   },
+  "type": "module",
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
-    "start": "node --watch /src/core/zoroHttp.ts",
-    "build": "tsc",
+    "dev": "tsx watch src/zoro.ts",
     "test": "vitest"
   },
   "repository": {
@@ -24,23 +24,23 @@
     "http",
     "axios",
     "request",
-    "typescript"
+    "typescript",
+    "xmlhttprequest"
   ],
   "author": "watercubz",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/watercubz/zoro/issues"
-  },
-  "homepage": "https://github.com/watercubz/zoro#readme",
+  "license": "MIT",
   "dependencies": {
-    "@types/node": "^25.2.0",
-    "@types/xmlhttprequest": "^1.8.2",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.18"
-  }
+    "@types/node": "^22.0.0",
+    "@types/xmlhttprequest": "^1.8.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/watercubz/zoro/issues"
+  },
+  "homepage": "https://github.com/watercubz/zoro#readme"
 }

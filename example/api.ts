@@ -1,5 +1,5 @@
-import { ZoroError } from "../core/zoroErrors.ts";
-import { Zoro } from "../core/zoroHttp.ts";
+import { ZoroError } from "../src/core/zoroErrors.ts";
+import { zoro } from "../src/zoro.ts";
 
 type User = {
   id: number;
@@ -12,15 +12,17 @@ type User = {
   company: Record<string, string>;
 };
 
-const zoro = new Zoro("https://jsonplaceholder.typicode.com");
+const api = zoro({
+  config: "https://jsonplaceholder.typicode.com",
+});
 
 /**
  * @param ZoroServices - This is an example function of how to use Zoro to make a request to an API and retrieve data from users or a single user.
  */
 
 const ZoroServices = {
-  getOne: () => zoro.get<User>("/users/1"),
-  getAll: () => zoro.get<User[]>("/users"),
+  getOne: () => api.get<User>("/users/1"),
+  getAll: () => api.get<User[]>("/users"),
 };
 
 /**
@@ -41,3 +43,5 @@ async function Example() {
 }
 
 Example();
+
+console.log(api.version);

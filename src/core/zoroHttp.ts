@@ -1,7 +1,6 @@
 import type { ZoroHttpMethod } from "../types/zoroHttpType.ts";
 import { ZoroError } from "./zoroErrors.ts";
 import { XMLHttpRequest } from "xmlhttprequest";
-
 export class Zoro {
   private baseUrl: string;
   public version: string = "1.0.0";
@@ -17,13 +16,21 @@ export class Zoro {
    * @param data - data is a generic D, which is unknown since you don't know the data type or its order
    * @returns
    */
-  private request<T, D = unknown>(
+  public request<T, D = unknown>(
     method: ZoroHttpMethod,
     endpoint: string,
     data?: D,
   ): Promise<T> {
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+      const isBrowser =
+        typeof window === "undefined" && typeof XMLHttpRequest !== "undefined";
+
+      const check_environment = isBrowser
+        ? window.XMLHttpRequest
+        : XMLHttpRequest;
+
+      const xhr = new check_environment();
+
       xhr.open(method, `${this.baseUrl}${endpoint}`);
       xhr.responseType = "json";
 
@@ -82,9 +89,5 @@ export class Zoro {
 
   public delete<T>(url: string): Promise<T> {
     return this.request<T>("DELETE", url);
-  }
-
-  public zoroVersion(): string {
-    return this.version;
   }
 }
