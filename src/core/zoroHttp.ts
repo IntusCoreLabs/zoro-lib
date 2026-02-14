@@ -1,6 +1,7 @@
 import type { ZoroHttpMethod } from "../types/zoroHttpType.ts";
 import { ZoroError } from "./zoroErrors.ts";
 import { XMLHttpRequest } from "xmlhttprequest";
+
 export class Zoro {
   private baseUrl: string;
   public version: string = "1.0.0";
@@ -23,13 +24,19 @@ export class Zoro {
   ): Promise<T> {
     return new Promise((resolve, reject) => {
       const isBrowser =
-        typeof window === "undefined" && typeof XMLHttpRequest !== "undefined";
+        typeof window !== "undefined" && typeof XMLHttpRequest !== "undefined";
 
-      const check_environment = isBrowser
+      const CheckEnvironment = isBrowser
         ? window.XMLHttpRequest
-        : XMLHttpRequest;
+        : typeof XMLHttpRequest !== "undefined"
+          ? XMLHttpRequest
+          : null;
 
-      const xhr = new check_environment();
+      if (!CheckEnvironment) {
+        throw new Error("DIABLOOOOOOOO");
+      }
+
+      const xhr = new CheckEnvironment();
 
       xhr.open(method, `${this.baseUrl}${endpoint}`);
       xhr.responseType = "json";
