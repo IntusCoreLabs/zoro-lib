@@ -9,9 +9,8 @@ import { Zoro } from "./core/zoroHttp.ts";
 * @returns An instance of the Zoro class to make requests.
 
 */
-function zoro({ config }: { config: string }) {
+function zoro({ config }: { config: string }): Zoro {
   const instance = new Zoro(config);
-
   return instance;
 }
 
