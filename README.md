@@ -10,34 +10,36 @@
 
 </div>
 
-
 # zoro
 
 zoro is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
 # Installing
 
-
 ## Package Manager
 
 npm:
+
 ```bash
-  npm install @zoro
+  npm install @zoro/http
 ```
+
 pnpm:
+
 ```bash
-  pnpm add  @zoro
+  pnpm add  @zoro/http
 ```
+
 yarn:
+
 ```bash
-  yarn add @zoro
+  yarn add @zoro/http
 ```
 
 ## Example
 
 ```typescript
-
-import zoro, { ZoroError} from "@zoro"
+import zoro, { ZoroError } from "@zoro/http";
 
 type User = {
   id: number;
@@ -78,7 +80,7 @@ Example();
 ## Example
 
 ```javascript
-import zoro, { ZoroError } from "@zoro";
+import zoro, { ZoroError } from "@zoro/http";
 
 type User = {
   id: number;
@@ -116,16 +118,17 @@ async function example() {
 example();
 
 ```
+
 ## API Reference
 
-````ts
+```ts
 ## Initialization
 
 const api = zoro({
   config: "https://jsonplaceholder.typicode.com",
 });
 
-````
+```
 
 ### Configuration Parameters
 
@@ -279,12 +282,11 @@ const updatedUser = await api.put<User>("/users/1", {
 
 ## Notes
 
-* All methods return `Promise<T>`
-* Generics provide full type safety and autocomplete
-* The `endpoint` is automatically appended to the base URL
+- All methods return `Promise<T>`
+- Generics provide full type safety and autocomplete
+- The `endpoint` is automatically appended to the base URL
 
 ---
-
 
 ## Why XMLHttpRequest?
 
