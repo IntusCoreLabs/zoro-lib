@@ -6,6 +6,7 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Release](https://img.shields.io/github/v/release/watercubz/zoro)
+[![Node.js Package](https://github.com/watercubz/zoro/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/watercubz/zoro/actions/workflows/npm-publish.yml)
 ![Downloads](https://img.shields.io/npm/dw/%40zoro)
 
 </div>
