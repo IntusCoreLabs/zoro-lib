@@ -21,25 +21,25 @@ zoro is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript 
 npm:
 
 ```bash
-  npm install @zoro/http
+  npm install @zoro-lib/http
 ```
 
 pnpm:
 
 ```bash
-  pnpm add  @zoro/http
+  pnpm add  @zoro-lib/http
 ```
 
 yarn:
 
 ```bash
-  yarn add @zoro/http
+  yarn add @zoro-lib/http
 ```
 
 ## Example
 
 ```typescript
-import zoro, { ZoroError } from "@zoro/http";
+import zoro, { ZoroError } from "@zoro-lib/http";
 
 type User = {
   id: number;
@@ -63,7 +63,7 @@ const Services = {
 
 async function Example() {
   try {
-    const data = await Services.getOne();
+  const data = await Services.getOne();
     console.log(data);
   } catch (error) {
     if (error instanceof ZoroError) {
@@ -80,7 +80,7 @@ Example();
 ## Example
 
 ```javascript
-import zoro, { ZoroError } from "@zoro/http";
+import zoro, { ZoroError } from "@zoro-lib/http";
 
 type User = {
   id: number;
