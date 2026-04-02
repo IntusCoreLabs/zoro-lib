@@ -4,9 +4,9 @@
 
 <div aling="center">
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![ License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![Release](https://img.shields.io/github/v/release/watercubz/zoro)
-![Downloads](https://img.shields.io/npm/dw/%40zoro)
+![Downloads](https://img.shields.io/npm/dw/%40zoro-lib%2Fhttp)
 
 </div>
 
