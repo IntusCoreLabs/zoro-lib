@@ -1,11 +1,11 @@
 import {
   FullfilledInterceptor,
-  interceptorHanlder,
+  interceptorHandler,
   RejectedInterceptor,
 } from "../types/interceptorType.ts";
 
 export class InterceptorManager<T> {
-  public handlers: (interceptorHanlder<T> | null)[] = [];
+  public handlers: (interceptorHandler<T> | null)[] = [];
 
   use(fullfilled: FullfilledInterceptor<T>, rejected?: RejectedInterceptor) {
     this.handlers.push({ fullfilled, rejected });

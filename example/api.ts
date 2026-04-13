@@ -20,28 +20,26 @@ const api = zoro({
  * @param ZoroServices - This is an example function of how to use Zoro to make a request to an API and retrieve data from users or a single user.
  */
 
-const ZoroServices = {
-  getOne: () => api.get<User>("/users/1"),
-  getAll: () => api.get<User[]>("/users"),
+export const ZoroServices = {
+  getOne: (): Promise<User> => api.get<User>("/users/1"),
+  getAll: (): Promise<User[]> => api.get<User[]>("/users"),
 };
 
 /**
  * @function Example - This function implements the ZoroService, which handles whether you want all or just one user in your request, and by implementing zoroError, it shows you the errors if your request fails for any reason.
  *
  */
-async function Example() {
+async function Example(): Promise<void> {
   try {
     const usuario = await ZoroServices.getOne();
     console.log(usuario);
   } catch (error) {
     if (error instanceof ZoroError) {
-      console.error(error.response.message);
+      console.error(error.message);
       console.error(error.response.data);
-      console.error(error.response.status);
+      console.error(error.status);
     }
   }
 }
 
 Example();
-
-console.log(api.version);

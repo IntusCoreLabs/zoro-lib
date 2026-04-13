@@ -17,7 +17,7 @@ export class Zoro {
    * @param data - data is a generic D, which is unknown since you don't know the data type or its order
    * @returns
    */
-  public request<T, D = unknown>(
+  private request<T, D = unknown>(
     method: ZoroHttpMethod,
     endpoint: string,
     data?: D,
@@ -33,7 +33,9 @@ export class Zoro {
           : null;
 
       if (!CheckEnvironment) {
-        throw new Error("DIABLOOOOOOOO");
+        throw new Error(
+          "Error: Please verify that you are in a web or server environment!",
+        );
       }
 
       const xhr = new CheckEnvironment();
@@ -88,6 +90,10 @@ export class Zoro {
 
   public post<T, D>(url: string, data: D): Promise<T> {
     return this.request<T>("POST", url, data);
+  }
+
+  public patch<T>(url: string): Promise<T> {
+    return this.request<T>("PATCH", url);
   }
 
   public put<T, D>(url: string, data: D): Promise<T> {
