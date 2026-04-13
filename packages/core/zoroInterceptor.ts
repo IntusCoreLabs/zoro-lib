@@ -1,5 +1,5 @@
-import { Zoro } from "./zoroHttp.ts";
-import { InterceptorManager } from "./zoroInterceptorManager.ts";
+import { Zoro } from "./zoroHttp.js";
+import { InterceptorManager } from "./zoroInterceptorManager.js";
 
 export class Interceptor extends Zoro {
   public interceptors = {

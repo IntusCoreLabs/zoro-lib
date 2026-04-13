@@ -1,5 +1,5 @@
 import type { ZoroHttpMethod } from "../types/zoroHttpType.ts";
-import { ZoroError } from "./zoroErrors.ts";
+import { ZoroError } from "./zoroErrors.js";
 import { XMLHttpRequest } from "xmlhttprequest";
 
 export class Zoro {

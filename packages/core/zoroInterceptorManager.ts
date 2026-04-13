@@ -2,7 +2,7 @@ import {
   FullfilledInterceptor,
   interceptorHandler,
   RejectedInterceptor,
-} from "../types/interceptorType.ts";
+} from "../types/interceptorType.js";
 
 export class InterceptorManager<T> {
   public handlers: (interceptorHandler<T> | null)[] = [];
