@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDir": "./packages",
     "outDir": "./dist",
     "module": "CommonJS",
     "target": "ES6",
@@ -8,8 +8,7 @@
     "strict": true,
     "sourceMap": false,
     "declaration": true,
-    "noEmit": true,
   },
-  "include": ["src/**/*", "public/example"],
-  "exclude": ["node_modules", "**/__test__/*"],
+  "include": ["packages/**/*", "public/example"],
+  "exclude": ["node_modules", "test"],
 }

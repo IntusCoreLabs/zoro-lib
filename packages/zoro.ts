@@ -1,4 +1,4 @@
-import { Zoro } from "./core/zoroHttp.ts";
+import { Zoro } from "./core/zoroHttp.js";
 
 /**
 

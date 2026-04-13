@@ -1,3 +1,3 @@
-export { zoro } from "./zoro.ts";
+export { zoro } from "./zoro.js";
 
-export { ZoroError } from "./core/zoroErrors.ts";
+export { ZoroError } from "./core/zoroErrors.js";
