@@ -10,7 +10,7 @@
 
 </div>
 
-# zoro
+# zoro-lib
 
 zoro-lib is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
