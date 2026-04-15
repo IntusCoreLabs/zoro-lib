@@ -4,15 +4,15 @@
 
 <div aling="center">
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![Release](https://img.shields.io/github/v/release/watercubz/zoro)
-![Downloads](https://img.shields.io/npm/dw/%40zoro)
+![Downloads](https://img.shields.io/npm/dw/%40zoro-lib%2Fhttp)
 
 </div>
 
-# zoro
+# zoro-lib
 
-zoro is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
+zoro-lib is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
 
 # Installing
 
@@ -63,7 +63,7 @@ const Services = {
 
 async function Example() {
   try {
-  const data = await Services.getOne();
+    const data = await Services.getOne();
     console.log(data);
   } catch (error) {
     if (error instanceof ZoroError) {
