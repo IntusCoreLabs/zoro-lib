@@ -1,0 +1,36 @@
+name: CI - zoro-lib
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/*"
+    pull_request:
+      branches: [main]
+
+  permission:
+    content: read
+
+  jobs:
+    lint:
+      name: Lint & Format
+      runs-on: Ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+
+        - uses: pnpm/action-setup@v4
+
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 22.12.0
+            cache: "pnpm"
+
+          - name: Install dependencies
+            run: pnpm install --forzen-lockfile
+
+          - name: check linting
+            run: pnpm run lint
+
+          - name: check formatting
+            run: pnpm run fmt:check
+
