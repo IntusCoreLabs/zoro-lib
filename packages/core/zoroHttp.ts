@@ -17,14 +17,9 @@ export class Zoro {
    * @param data - data is a generic D, which is unknown since you don't know the data type or its order
    * @returns
    */
-  private request<T, D = unknown>(
-    method: ZoroHttpMethod,
-    endpoint: string,
-    data?: D,
-  ): Promise<T> {
+  private request<T, D = unknown>(method: ZoroHttpMethod, endpoint: string, data?: D): Promise<T> {
     return new Promise((resolve, reject) => {
-      const isBrowser =
-        typeof window !== "undefined" && typeof XMLHttpRequest !== "undefined";
+      const isBrowser = typeof window !== "undefined" && typeof XMLHttpRequest !== "undefined";
 
       const CheckEnvironment = isBrowser
         ? window.XMLHttpRequest
@@ -33,9 +28,7 @@ export class Zoro {
           : null;
 
       if (!CheckEnvironment) {
-        throw new Error(
-          "Error: Please verify that you are in a web or server environment!",
-        );
+        throw new Error("Error: Please verify that you are in a web or server environment!");
       }
 
       const xhr = new CheckEnvironment();

@@ -1,48 +1,56 @@
 {
   "name": "@zoro-lib/http",
-  "version": "0.0.2",
-  "description": "zoro HTTP client based on Promises and XMLHttpRequest",
+  "version": "0.0.3",
+  "description": "zoro-lib HTTP client based on Promises and XMLHttpRequest",
+  "keywords": [
+    "api",
+    "axios",
+    "http",
+    "request",
+    "typescript",
+    "xmlhttprequest"
+  ],
+  "homepage": "https://github.com/IntusCoreLabs/zoro-lib#readme",
+  "bugs": {
+    "url": "https://github.com/IntusCoreLabs/zoro-lib/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "watercubz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IntusCoreLabs/zoro-lib.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "dev": "tsx watch packages/zoro.ts",
+    "dev": "tsx packages/zoro.ts",
     "build": "tsc",
-    "prepublishOnly": "npm run build",
-    "test": "vitest"
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/watercubz/zoro.git"
-  },
-  "keywords": [
-    "api",
-    "http",
-    "axios",
-    "request",
-    "typescript",
-    "xmlhttprequest"
-  ],
-  "author": "watercubz",
-  "license": "Apache-2.0",
   "dependencies": {
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.19.17",
     "@types/xmlhttprequest": "^1.8.2",
-    "tsx": "^4.19.0",
-    "typescript": "^5.0.0",
-    "vitest": "^2.0.0"
+    "husky": "9.1.7",
+    "oxfmt": "0.45.0",
+    "oxlint": "^1.60.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   },
-  "bugs": {
-    "url": "https://github.com/watercubz/zoro/issues"
-  },
-  "homepage": "https://github.com/watercubz/zoro#readme"
+  "engines": {
+    "node": ">=22.12.0"
+  }
 }
