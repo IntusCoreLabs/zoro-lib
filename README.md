@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 ![Release](https://img.shields.io/github/v/release/watercubz/zoro)
 ![Downloads](https://img.shields.io/npm/dw/%40zoro-lib%2Fhttp)
-
+<a href="https://pkg-size.dev/@zoro-lib/http"><img src="https://pkg-size.dev/badge/install/15221" title="Install size for @zoro-lib/http"></a>
 </div>
 
 # zoro-lib
@@ -363,7 +363,9 @@ await api.delete("/users/1");
 - Works on Node.js (>=22.12.0), Deno, Bun, and browsers
 - Requests that exceed the configured `timeout` throw a `ZoroError` with status `0`
 - Endpoints must be relative paths — absolute URLs are rejected to prevent SSRF
-
+  
+## Contributors 
+- [@buttercubz](https://www.github.com/buttercubz)
 ## Authors
 
 - [@watercubz](https://www.github.com/watercubz)
