@@ -12,7 +12,7 @@
 
 # zoro-lib
 
-zoro-lib is a lightweight, HTTP client built on XMLHttpRequest with full TypeScript type safety.
+zoro-lib is a lightweight, zero-dependency HTTP client with full TypeScript type safety. Works across all modern JavaScript runtimes: Node.js, Deno, Bun, and browsers.
 
 # Installing
 
@@ -39,7 +39,7 @@ yarn:
 ## Example
 
 ```typescript
-import zoro, { ZoroError } from "@zoro-lib/http";
+import { zoro, ZoroError } from "@zoro-lib/http";
 
 type User = {
   id: number;
@@ -53,7 +53,7 @@ type User = {
 };
 
 const api = zoro({
-  config: "https://jsonplaceholder.typicode.com",
+  baseUrl: "https://jsonplaceholder.typicode.com",
 });
 
 const Services = {
@@ -77,10 +77,10 @@ async function Example() {
 Example();
 ```
 
-## Example
+## Example with POST
 
-```javascript
-import zoro, { ZoroError } from "@zoro-lib/http";
+```typescript
+import { zoro, ZoroError } from "@zoro-lib/http";
 
 type User = {
   id: number;
@@ -99,15 +99,15 @@ const payload: CreateUserPayload = {
 };
 
 const api = zoro({
-  config: "https://jsonplaceholder.typicode.com",
+  baseUrl: "https://jsonplaceholder.typicode.com",
 });
 
 async function example() {
   try {
-    const user = await api.post<User>("/users", payload);
+    const user = await api.post<User, CreateUserPayload>("/users", payload);
     console.log(user);
   } catch (error) {
-    if (error instanceof ZoroError<User>) {
+    if (error instanceof ZoroError) {
       console.error(error.response.status);
       console.error(error.response.message);
       console.error(error.response.data);
@@ -116,25 +116,31 @@ async function example() {
 }
 
 example();
-
 ```
 
 ## API Reference
 
+### Initialization
+
 ```ts
-## Initialization
+import { zoro } from "@zoro-lib/http";
 
 const api = zoro({
-  config: "https://jsonplaceholder.typicode.com",
+  baseUrl: "https://jsonplaceholder.typicode.com",
+  timeout: 10_000,
+  headers: {
+    Authorization: "Bearer my-token",
+  },
 });
-
 ```
 
 ### Configuration Parameters
 
-| Name   | Type   | Description  |
-| ------ | ------ | ------------ |
-| config | string | API Base URL |
+| Name    | Type                     | Required | Default | Description                                      |
+| ------- | ------------------------ | -------- | ------- | ------------------------------------------------ |
+| baseUrl | string                   | Yes      | -       | API Base URL prepended to every request endpoint |
+| timeout | number                   | No       | 30000   | Request timeout in milliseconds                  |
+| headers | Record\<string, string\> | No       | {}      | Default headers sent with every request          |
 
 ---
 
@@ -183,7 +189,7 @@ const users = await api.get<User[]>("/users");
 Performs an HTTP **POST** request.
 
 ```ts
-api.post<T>(endpoint, data);
+api.post<T, D>(endpoint, data);
 ```
 
 #### Parameters
@@ -191,13 +197,14 @@ api.post<T>(endpoint, data);
 | Name     | Type   | Description            |
 | -------- | ------ | ---------------------- |
 | endpoint | string | Relative resource path |
-| data     | object | Request body (JSON)    |
+| data     | D      | Request body (JSON)    |
 
 #### Type Parameters
 
 | Name | Description            |
 | ---- | ---------------------- |
 | `T`  | Expected response type |
+| `D`  | Request body type      |
 
 #### Example
 
@@ -208,7 +215,7 @@ type User = {
   email: string;
 };
 
-const newUser = await api.post<User>("/users", {
+const newUser = await api.post<User, { name: string; email: string }>("/users", {
   name: "John",
   email: "john@mail.com",
 });
@@ -218,10 +225,10 @@ const newUser = await api.post<User>("/users", {
 
 ### PUT
 
-Performs an HTTP **PUT** request.
+Performs an HTTP **PUT** request for full replacements.
 
 ```ts
-api.put<T>(endpoint, data);
+api.put<T, D>(endpoint, data);
 ```
 
 #### Parameters
@@ -229,7 +236,70 @@ api.put<T>(endpoint, data);
 | Name     | Type   | Description            |
 | -------- | ------ | ---------------------- |
 | endpoint | string | Relative resource path |
-| data     | object | Request body (JSON)    |
+| data     | D      | Request body (JSON)    |
+
+#### Type Parameters
+
+| Name | Description            |
+| ---- | ---------------------- |
+| `T`  | Expected response type |
+| `D`  | Request body type      |
+
+#### Example
+
+```ts
+const updatedUser = await api.put<User, { name: string }>("/users/1", {
+  name: "John Updated",
+});
+```
+
+---
+
+### PATCH
+
+Performs an HTTP **PATCH** request for partial updates.
+
+```ts
+api.patch<T, D>(endpoint, data);
+```
+
+#### Parameters
+
+| Name     | Type   | Description                |
+| -------- | ------ | -------------------------- |
+| endpoint | string | Relative resource path     |
+| data     | D      | Partial update body (JSON) |
+
+#### Type Parameters
+
+| Name | Description            |
+| ---- | ---------------------- |
+| `T`  | Expected response type |
+| `D`  | Request body type      |
+
+#### Example
+
+```ts
+const patched = await api.patch<User, { email: string }>("/users/1", {
+  email: "new@mail.com",
+});
+```
+
+---
+
+### DELETE
+
+Performs an HTTP **DELETE** request.
+
+```ts
+api.delete<T>(endpoint);
+```
+
+#### Parameters
+
+| Name     | Type   | Description            |
+| -------- | ------ | ---------------------- |
+| endpoint | string | Relative resource path |
 
 #### Type Parameters
 
@@ -240,15 +310,7 @@ api.put<T>(endpoint, data);
 #### Example
 
 ```ts
-type User = {
-  id: number;
-  name: string;
-  email: string;
-};
-
-const updatedUser = await api.put<User>("/users/1", {
-  name: "John Updated",
-});
+await api.delete("/users/1");
 ```
 
 ---
@@ -256,6 +318,8 @@ const updatedUser = await api.put<User>("/users/1", {
 ## Full Example
 
 ```ts
+import { zoro } from "@zoro-lib/http";
+
 type User = {
   id: number;
   name: string;
@@ -263,19 +327,29 @@ type User = {
 };
 
 const api = zoro({
-  config: "https://jsonplaceholder.typicode.com",
+  baseUrl: "https://jsonplaceholder.typicode.com",
+  timeout: 10_000,
+  headers: {
+    Authorization: "Bearer my-token",
+  },
 });
 
 const users = await api.get<User[]>("/users");
 
-const newUser = await api.post<User>("/users", {
+const newUser = await api.post<User, { name: string; email: string }>("/users", {
   name: "John",
   email: "john@mail.com",
 });
 
-const updatedUser = await api.put<User>("/users/1", {
+const updatedUser = await api.put<User, { name: string }>("/users/1", {
   name: "John Updated",
 });
+
+const patched = await api.patch<User, { email: string }>("/users/1", {
+  email: "new@mail.com",
+});
+
+await api.delete("/users/1");
 ```
 
 ---
@@ -285,18 +359,10 @@ const updatedUser = await api.put<User>("/users/1", {
 - All methods return `Promise<T>`
 - Generics provide full type safety and autocomplete
 - The `endpoint` is automatically appended to the base URL
-
----
-
-## Why XMLHttpRequest?
-
-zoro is built on XMLHttpRequest to provide:
-
-Compatibility with older environments
-
-Fine-grained control over request lifecycle
-
-Despite this, the public API remains modern and Promise-based.
+- Zero production dependencies — uses the native Fetch API
+- Works on Node.js (>=22.12.0), Deno, Bun, and browsers
+- Requests that exceed the configured `timeout` throw a `ZoroError` with status `0`
+- Endpoints must be relative paths — absolute URLs are rejected to prevent SSRF
 
 ## Authors
 
