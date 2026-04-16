@@ -7,17 +7,10 @@ settings:
 importers:
 
   .:
-    dependencies:
-      xmlhttprequest:
-        specifier: ^1.8.0
-        version: 1.8.0
     devDependencies:
       '@types/node':
         specifier: ^22.19.17
         version: 22.19.17
-      '@types/xmlhttprequest':
-        specifier: ^1.8.2
-        version: 1.8.2
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -439,9 +432,6 @@ packages:
   '@types/node@22.19.17':
     resolution: {integrity: sha512-wGdMcf+vPYM6jikpS/qhg6WiqSV/OhG+jeeHT/KlVqxYfD40iYJf9/AE1uQxVWFvU7MipKRkRv8NSHiCGgPr8Q==}
 
-  '@types/xmlhttprequest@1.8.2':
-    resolution: {integrity: sha512-PfIzIb4tiva9bL40mOmeAe23T3QkJS2AfZ+vqgJWEJ2bxn5KUnDkikizu6TVaZRzQeThOeAn/Zh4PMkfFwEMtg==}
-
   esbuild@0.27.7:
     resolution: {integrity: sha512-IxpibTjyVnmrIQo5aqNpCgoACA/dTKLTlhMHihVHhdkxKyPO1uBBthumT0rdHmcsk9uMonIWS0m4FljWzILh3w==}
     engines: {node: '>=18'}
@@ -494,10 +484,6 @@ packages:
 
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
-
-  xmlhttprequest@1.8.0:
-    resolution: {integrity: sha512-58Im/U0mlVBLM38NdZjHyhuMtCqa61469k2YP/AaPbvCoV9aQGUpbJBj1QRm2ytRiVQBD/fsw7L2bJGDVQswBA==}
-    engines: {node: '>=0.4.0'}
 
 snapshots:
 
@@ -697,8 +683,6 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/xmlhttprequest@1.8.2': {}
-
   esbuild@0.27.7:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.27.7
@@ -797,5 +781,3 @@ snapshots:
   typescript@5.9.3: {}
 
   undici-types@6.21.0: {}
-
-  xmlhttprequest@1.8.0: {}

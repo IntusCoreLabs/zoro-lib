@@ -1,17 +1,40 @@
-import type { ZoroResponse } from "../types/zoroErrorType.ts";
+import type { ZoroErrorResponse } from "../types/zoroErrorType.ts";
+
 /**
- * @param message - the message is the type of error we will define when our request fails or something happens along the way.
- * @param ZoroResponse - zoroResponse is a dataset that will provide us with even more information when one of our requests is canceled, fails, or remains pending. It includes `data`, which is a generic `T` that will be the error returned based on the data type of our request; `message`, which is the error returned by the server based on the type of failure; and finally, the status code, which will tell us exactly why it failed based on the code.
- * @param code - code is an optional code that can implement a status code outside of the zoroResponse type
+ * Custom error class thrown by the Zoro HTTP client on failed requests.
  *
+ * Wraps the standard `Error` with a structured {@link ZoroErrorResponse} containing
+ * the server-provided data, a human-readable message, and the HTTP status code.
+ * This allows consumers to inspect both the error message and the full response
+ * context when handling failures.
+ *
+ * @typeParam T - The type of the response data attached to this error.
  * @author watercubz
+ *
+ * @example
+ * ```ts
+ * try {
+ *   await api.get("/users/999");
+ * } catch (err) {
+ *   if (err instanceof ZoroError) {
+ *     console.log(err.status);           // 404
+ *     console.log(err.response.message);  // "http: Not Found"
+ *   }
+ * }
+ * ```
  */
-
 export class ZoroError<T> extends Error {
+  /** Optional application-level error code, independent of the HTTP status. */
   public readonly code?: number;
-  public readonly response: ZoroResponse<T>;
+  /** Structured response containing data, message, and HTTP status. */
+  public readonly response: ZoroErrorResponse<T>;
 
-  constructor(message: string, response: ZoroResponse<T>, code?: number) {
+  /**
+   * @param message - A short description of the error (e.g. "http 404: Not Found").
+   * @param response - The structured response with data, message, and status code.
+   * @param code - An optional application-level error code.
+   */
+  constructor(message: string, response: ZoroErrorResponse<T>, code?: number) {
     super(message);
     this.name = "ZoroError";
     this.response = response;
@@ -20,6 +43,7 @@ export class ZoroError<T> extends Error {
     Object.setPrototypeOf(this, ZoroError.prototype);
   }
 
+  /** Returns the HTTP status code from the response (shorthand for `response.status`). */
   get status() {
     return this.response.status;
   }

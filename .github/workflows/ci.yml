@@ -6,10 +6,10 @@ on:
     paths:
       - "packages/**"
   pull_request:
-      branches: [main]
+    branches: [main]
 
 permissions:
-    contents: read
+  contents: read
 
 jobs:
   lint:
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 22.12.0
           cache: "pnpm"
-          
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
