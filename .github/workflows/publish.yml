@@ -1,6 +1,5 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: zoro publish npm
 
 on:
@@ -12,12 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      id-token: write 
     steps:
       - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22.12.0
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish --provenance
+          registry-url: https://npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm publish --provenance --no-git-checks
