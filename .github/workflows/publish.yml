@@ -3,10 +3,6 @@
 
 name: zoro publish npm
 
-permissions:
- contents: read
- id-token: write
-
 on:
   release:
     types: [published]
@@ -14,6 +10,9 @@ on:
 jobs:
  publish:
     runs-on: ubuntu-latest
+    permissions: 
+     contents: read
+     id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
