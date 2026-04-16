@@ -63,7 +63,7 @@ const Services = {
 
 async function Example() {
   try {
-  const data = await Services.getOne();
+    const data = await Services.getOne();
     console.log(data);
   } catch (error) {
     if (error instanceof ZoroError) {

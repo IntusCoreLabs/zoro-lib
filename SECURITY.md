@@ -2,19 +2,28 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          |
 | ------- | ------------------ |
 | 0.0.3   | :white_check_mark: |
-| 0.0.2   | :white_check_mark:                |
-| 0.0.1   | :white_check_mark: |
+| 0.0.2   | :x:                |
+| 0.0.1   | :x:                |
+
+Only the latest version receives security updates. We recommend always upgrading to the latest release.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in zoro-lib, please report it responsibly:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **Do not** open a public GitHub issue for security vulnerabilities.
+2. Report vulnerabilities via [GitHub Security Advisories](https://github.com/IntusCoreLabs/zoro-lib/security/advisories/new).
+3. Include a detailed description of the vulnerability, steps to reproduce, and potential impact.
+
+### Response Timeline
+
+- **Acknowledgment**: Within 48 hours of report submission.
+- **Assessment**: Within 7 days we will confirm whether the vulnerability is accepted or declined.
+- **Fix**: Accepted vulnerabilities will be patched within 30 days, depending on severity.
+
+### Disclosure Policy
+
+We follow coordinated disclosure. Please allow us reasonable time to address the issue before any public disclosure.

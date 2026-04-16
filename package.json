@@ -5,10 +5,10 @@
   "keywords": [
     "api",
     "axios",
+    "fetch",
     "http",
     "request",
-    "typescript",
-    "xmlhttprequest"
+    "typescript"
   ],
   "homepage": "https://github.com/IntusCoreLabs/zoro-lib#readme",
   "bugs": {
@@ -38,12 +38,8 @@
     "lint:fix": "oxlint --fix",
     "prepare": "husky"
   },
-  "dependencies": {
-    "xmlhttprequest": "^1.8.0"
-  },
   "devDependencies": {
     "@types/node": "^22.19.17",
-    "@types/xmlhttprequest": "^1.8.2",
     "husky": "9.1.7",
     "oxfmt": "0.45.0",
     "oxlint": "^1.60.0",
